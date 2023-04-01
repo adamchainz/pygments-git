@@ -41,4 +41,28 @@ Improve your skills with `one of my books <https://adamj.eu/books/>`__.
 Usage
 =====
 
-TODO
+With the package installed, Pygments will autodiscover the below lexers.
+
+When using Pygments directly, you can refer to them by name.
+Within Sphinx/docutils, you can refer to them in ``code-block`` directives:
+
+.. code-block:: console
+
+    .. code-block:: git-console
+
+        $ git log --oneline
+        82fbbd3 D'oh! Fix math proof
+        91e9879 Aye carumba! Grammar mistake
+        61c4c08 Cowabunga! Update bibliography
+
+``git-console``
+---------------
+
+A lexer for displaying interactive shell sessions with Git.
+It calls out to |BashLexer|__ for highlighting commands on lines starting with a ``$`` and |DiffLexer|__ for highlighting inline diffs.
+
+.. |BashLexer| replace:: ``BashLexer``
+__ https://pygments.org/docs/lexers/#pygments.lexers.shell.BashLexer
+
+.. |DiffLexer| replace:: ``DiffLexer``
+__ https://pygments.org/docs/lexers/#pygments.lexers.diff.DiffLexer

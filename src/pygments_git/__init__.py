@@ -2,8 +2,8 @@ from __future__ import annotations
 
 import re
 
-from pygments.lexer import RegexLexer
 from pygments.lexer import bygroups
+from pygments.lexer import RegexLexer
 from pygments.lexer import using
 from pygments.lexers.diff import DiffLexer
 from pygments.lexers.shell import BashLexer
@@ -41,7 +41,9 @@ class GitSessionLexer(RegexLexer):
                         :
                     )
                 """,
-                bygroups(Number.Hex, Text, Name.Label, Name.Tag),
+                bygroups(  # type: ignore [no-untyped-call]
+                    Number.Hex, Text, Name.Label, Name.Tag
+                ),
             ),
             # git log --oneline
             (
@@ -56,21 +58,25 @@ class GitSessionLexer(RegexLexer):
                         \)
                     )
                 """,
-                bygroups(Number.Hex, Text, Name.Label),
+                bygroups(  # type: ignore [no-untyped-call]
+                    Number.Hex, Text, Name.Label
+                ),
             ),
             # Any SHA to be highlighted as such
             (r"\b([0-9a-f]{40}|[0-9a-f]{7})\b", Number.Hex),
             # Diff lines
             (r"^(?=@@ )", Generic.Subheading, "diff"),
-            # (r"(-.*)(\n)", bygroups(Generic.Deleted, Whitespace)),
-            # (r"(\+.*)(\n)", bygroups(Generic.Inserted, Whitespace)),
             # Everything else plain text
             (r".*\n", Generic.Output),
         ],
         "command": [
-            (r".*$", using(BashLexer), "#pop"),
+            (r".*$", using(BashLexer), "#pop"),  # type: ignore [no-untyped-call]
         ],
         "diff": [
-            (r"(([@ -+].*|)\n)*", using(DiffLexer), "#pop"),
+            (
+                r"(([@ -+].*|)\n)*",
+                using(DiffLexer),  # type: ignore [no-untyped-call]
+                "#pop",
+            ),
         ],
     }

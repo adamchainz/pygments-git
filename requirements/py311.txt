@@ -8,6 +8,10 @@ attrs==22.2.0 \
     --hash=sha256:29e95c7f6778868dbd49170f98f8818f78f3dc5e0e37c0b1f474e3561b240836 \
     --hash=sha256:c9227bfc2f01993c03f68db37d1d15c9690188323c067c641f1a35ca58185f99
     # via pytest
+beautifulsoup4==4.12.0 \
+    --hash=sha256:2130a5ad7f513200fae61a17abb5e338ca980fa28c439c0571014bc0217e9591 \
+    --hash=sha256:c5fceeaec29d09c84970e47c65f2f0efe57872f7cff494c9691a26ec0ff13234
+    # via -r requirements.in
 coverage==7.2.2 \
     --hash=sha256:006ed5582e9cbc8115d2e22d6d2144a0725db542f654d9d4fda86793832f873d \
     --hash=sha256:046936ab032a2810dcaafd39cc4ef6dd295df1a7cbead08fe996d4765fca9fe4 \
@@ -87,3 +91,7 @@ pytest-randomly==3.12.0 \
     --hash=sha256:d60c2db71ac319aee0fc6c4110a7597d611a8b94a5590918bfa8583f00caccb2 \
     --hash=sha256:f4f2e803daf5d1ba036cc22bf4fe9dbbf99389ec56b00e5cba732fb5c1d07fdd
     # via -r requirements.in
+soupsieve==2.4 \
+    --hash=sha256:49e5368c2cda80ee7e84da9dbe3e110b70a4575f196efb74e51b94549d921955 \
+    --hash=sha256:e28dba9ca6c7c00173e34e4ba57448f0688bb681b7c5e8bf4971daafc093d69a
+    # via beautifulsoup4

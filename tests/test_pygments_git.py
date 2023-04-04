@@ -46,7 +46,7 @@ def golden_file(request):
             self.cases[testid] = (lexer, given, result)
             if not save and testid in loaded_cases:  # pragma: no branch
                 loaded_lexer, loaded_given, loaded_result = loaded_cases[testid]
-                if lexer == loaded_lexer and given == loaded_given:
+                if lexer == loaded_lexer and given == loaded_given:  # pragma: no branch
                     assert result == loaded_result
 
     checker = Checker()

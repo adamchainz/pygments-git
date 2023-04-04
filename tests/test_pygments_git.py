@@ -107,6 +107,34 @@ def golden_file(request):
         index.write_text("\n".join(lines))
 
 
+def test_git_commit_edit_msg(golden_file):
+    golden_file.check(
+        "test_git_commit_edit_msg",
+        "git-commit-edit-msg",
+        """\
+        Bop it
+
+        # Please enter the commit message for your changes. Lines starting
+        # with '#' will be ignored, and an empty message aborts the commit.
+        #
+        # On branch main
+        # Changes to be committed:
+        #   modified:   it.txt
+        #
+        # ------------------------ >8 ------------------------
+        # Do not modify or remove the line above.
+        # Everything below it will be ignored.
+        diff --git it.txt it.txt
+        index ed3581b..b27f6d4 100644
+        --- it.txt
+        +++ it.txt
+        @@ -1 +1 @@
+        -twisted
+        +bopped
+        """,
+    )
+
+
 def test_git_console(golden_file):
     golden_file.check(
         "test_git_console",

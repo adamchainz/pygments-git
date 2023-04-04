@@ -46,7 +46,7 @@ With the package installed, Pygments will autodiscover the below lexers.
 When using Pygments directly, you can refer to them by name.
 Within Sphinx/docutils, you can refer to them in ``code-block`` directives:
 
-.. code-block:: console
+.. code-block:: restructuredtext
 
     .. code-block:: git-console
 
@@ -55,14 +55,34 @@ Within Sphinx/docutils, you can refer to them in ``code-block`` directives:
         91e9879 Aye carumba! Grammar mistake
         61c4c08 Cowabunga! Update bibliography
 
+``git-commit-edit-msg``
+-----------------------
+
+A lexer for the ``COMMIT_EDITMSG`` file that Git opens when you run ``git commit``.
+It calls out to |DiffLexer|__ for highlighting any diff, as added by |git commit --verbose|__.
+
+.. |DiffLexer| replace:: ``DiffLexer``
+__ https://pygments.org/docs/lexers/#pygments.lexers.diff.DiffLexer
+
+.. |git commit --verbose| replace:: ``git commit --verbose``
+__ https://git-scm.com/docs/git-commit#Documentation/git-commit.txt--v
+
 ``git-console``
 ---------------
 
-A lexer for displaying interactive shell sessions with Git.
-It calls out to |BashLexer|__ for highlighting commands on lines starting with a ``$`` and |DiffLexer|__ for highlighting inline diffs.
+A lexer for interactive shell sessions with Git.
+It calls out to |BashLexer|__ for highlighting commands on lines starting with a ``$`` and |DiffLexer2|__ for highlighting inline diffs.
 
 .. |BashLexer| replace:: ``BashLexer``
 __ https://pygments.org/docs/lexers/#pygments.lexers.shell.BashLexer
 
-.. |DiffLexer| replace:: ``DiffLexer``
+.. |DiffLexer2| replace:: ``DiffLexer``
 __ https://pygments.org/docs/lexers/#pygments.lexers.diff.DiffLexer
+
+``git-rebase-todo``
+-------------------
+
+A lexer for the ``git-rebase-todo`` file that Git opens when you run |git rebase --interactive|__.
+
+.. |git rebase --interactive| replace:: ``git rebase --interactive``
+__ https://git-scm.com/docs/git-rebase#Documentation/git-rebase.txt--i

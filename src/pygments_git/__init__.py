@@ -16,87 +16,54 @@ from pygments.token import String
 from pygments.token import Text
 
 
-class GitRebaseTodoLexer(RegexLexer):
-    name = "Git Rebase TODO"
-    aliases = ("git-rebase-todo",)
+class GitCommitEditMsgLexer(RegexLexer):
+    name = "Git Commit Edit-Msg"
+    aliases = ("git-commit-edit-msg",)
     flags = re.MULTILINE
 
     tokens = {
         "root": [
             (
-                r"""(?x)
-                    ^
-                    ([a-z]+)
-                    (\ )
-                    ([0-9a-f]{7})
-                    (\ .*)
-                    $
-                """,
-                bygroups(  # type: ignore [no-untyped-call]
-                    Keyword, Text, Number.Hex, Text
-                ),
+                r"^(# On branch )(.*)$",
+                bygroups(Comment, Name.Label),  # type: ignore [no-untyped-call]
             ),
+            (r"^#.*\n", Comment),
+            # Diff lines
+            (r"^diff --git.*$", Generic.Heading),
             (
-                r"""(?x)
-                    ^
-                    (update-ref)
-                    (\ )
-                    (.*)
-                    $
-                """,
-                bygroups(Keyword, Text, Name.Label),  # type: ignore [no-untyped-call]
-            ),
-            (
-                r"""(?x)
-                    ^
-                    (\#\ Rebase\ )
+                r"""(?x)^
+                    (index\ )
                     ([0-9a-f]{7})
                     (\.\.)
                     ([0-9a-f]{7})
-                    (\ onto\ )
-                    ([0-9a-f]{7})
-                    (.*)
+                    (\ \d+)
                     $
                 """,
                 bygroups(  # type: ignore [no-untyped-call]
-                    Comment,
+                    Generic.Heading,
                     Number.Hex,
-                    Comment,
+                    Text,
                     Number.Hex,
-                    Comment,
-                    Number.Hex,
-                    Comment,
+                    Text,
                 ),
             ),
-            (
-                r"""(?x)
-                    ^
-                    (\#\ )
-                    ([a-z])
-                    (,\ )
-                    ([a-z-]+)
-                    (\ .*?)
-                    (\ =\ .*|$)
-                    $
-                """,
-                bygroups(  # type: ignore [no-untyped-call]
-                    Comment,
-                    Keyword,
-                    Comment,
-                    Keyword,
-                    Name.Variable,
-                    Comment,
-                ),
-            ),
-            (r"^#.*\n", Comment),
+            (r"^(?=@@ )", Generic.Subheading, "diff"),
+            # Everything else
             (r".*\n", Text),
+        ],
+        "diff": [
+            (
+                r"(?s).*",
+                using(DiffLexer),  # type: ignore [no-untyped-call]
+                "#pop",
+            ),
         ],
     }
 
 
 class GitBashSessionLexer(RegexLexer):
     name = "Git Bash Session"
-    aliases = ("git-console", "git-shell-session")
+    aliases = ("git-console",)
     flags = re.MULTILINE
 
     tokens = {
@@ -225,5 +192,83 @@ class GitBashSessionLexer(RegexLexer):
                 using(DiffLexer),  # type: ignore [no-untyped-call]
                 "#pop",
             ),
+        ],
+    }
+
+
+class GitRebaseTodoLexer(RegexLexer):
+    name = "Git Rebase TODO"
+    aliases = ("git-rebase-todo",)
+    flags = re.MULTILINE
+
+    tokens = {
+        "root": [
+            (
+                r"""(?x)
+                    ^
+                    ([a-z]+)
+                    (\ )
+                    ([0-9a-f]{7})
+                    (\ .*)
+                    $
+                """,
+                bygroups(  # type: ignore [no-untyped-call]
+                    Keyword, Text, Number.Hex, Text
+                ),
+            ),
+            (
+                r"""(?x)
+                    ^
+                    (update-ref)
+                    (\ )
+                    (.*)
+                    $
+                """,
+                bygroups(Keyword, Text, Name.Label),  # type: ignore [no-untyped-call]
+            ),
+            (
+                r"""(?x)
+                    ^
+                    (\#\ Rebase\ )
+                    ([0-9a-f]{7})
+                    (\.\.)
+                    ([0-9a-f]{7})
+                    (\ onto\ )
+                    ([0-9a-f]{7})
+                    (.*)
+                    $
+                """,
+                bygroups(  # type: ignore [no-untyped-call]
+                    Comment,
+                    Number.Hex,
+                    Comment,
+                    Number.Hex,
+                    Comment,
+                    Number.Hex,
+                    Comment,
+                ),
+            ),
+            (
+                r"""(?x)
+                    ^
+                    (\#\ )
+                    ([a-z])
+                    (,\ )
+                    ([a-z-]+)
+                    (\ .*?)
+                    (\ =\ .*|$)
+                    $
+                """,
+                bygroups(  # type: ignore [no-untyped-call]
+                    Comment,
+                    Keyword,
+                    Comment,
+                    Keyword,
+                    Name.Variable,
+                    Comment,
+                ),
+            ),
+            (r"^#.*\n", Comment),
+            (r".*\n", Text),
         ],
     }

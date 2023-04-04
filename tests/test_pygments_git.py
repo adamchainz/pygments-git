@@ -113,10 +113,24 @@ def test_git_console(golden_file):
         "git-console",
         """\
         $ git reflog
-        819b03d (HEAD -> main, origin/main) HEAD@{0}: commit: Bop it
+        0e87b4d (HEAD -> main, origin/main) HEAD@{0}: commit: Bop it
         414a4ce HEAD@{1}: commit (amend): Twist it
         $ git log --oneline 'main'
-        819b03d Bop it
+        0e87b4d Bop it
         414a4ce Twist it
+        $ git log --patch -n 1
+        commit 0e87b4d49a0c48fd29b1b1c400ac7ebeabeb535d (HEAD -> main)
+        Author: A Hacker <hacker@example.com>
+        Date:   Tue Apr 4 11:32:10 2023 +0100
+
+            Bop it
+
+        diff --git it.txt it.txt
+        index 3eb29f0..ed3581b 100644
+        --- it.txt
+        +++ it.txt
+        @@ -1 +1 @@
+        -twisted
+        +bopped
         """,
     )

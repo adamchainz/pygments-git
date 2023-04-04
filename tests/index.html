@@ -178,6 +178,89 @@ $ git commit -m &quot;Spin it&quot;
 </pre></div>
 </td>
 </tr>
+<tr>
+<td>
+test_git_rebase_todo
+</td>
+<td>
+git-rebase-todo
+</td>
+<td>
+<code>
+<pre>
+pick d05ab26 Flick it
+update-ref refs/heads/other
+
+# Rebase 7d2c29b..d05ab26 onto 7d2c29b (1 command)
+#
+# Commands:
+# p, pick &lt;commit&gt; = use commit
+# r, reword &lt;commit&gt; = use commit, but edit the commit message
+# e, edit &lt;commit&gt; = use commit, but stop for amending
+# s, squash &lt;commit&gt; = use commit, but meld into previous commit
+# f, fixup [-C | -c] &lt;commit&gt; = like &quot;squash&quot; but keep only the previous
+#                    commit&#x27;s log message, unless -C is used, in which case
+#                    keep only this commit&#x27;s message; -c is same as -C but
+#                    opens the editor
+# x, exec &lt;command&gt; = run command (the rest of the line) using shell
+# b, break = stop here (continue rebase later with &#x27;git rebase --continue&#x27;)
+# d, drop &lt;commit&gt; = remove commit
+# l, label &lt;label&gt; = label current HEAD with a name
+# t, reset &lt;label&gt; = reset HEAD to a label
+# m, merge [-C &lt;commit&gt; | -c &lt;commit&gt;] &lt;label&gt; [# &lt;oneline&gt;]
+#         create a merge commit using the original merge commit&#x27;s
+#         message (or the oneline, if no original merge commit was
+#         specified); use -c &lt;commit&gt; to reword the commit message
+# u, update-ref &lt;ref&gt; = track a placeholder for the &lt;ref&gt; to be updated
+#                       to this position in the new commits. The &lt;ref&gt; is
+#                       updated at the end of the rebase
+#
+# These lines can be re-ordered; they are executed from top to bottom.
+#
+# If you remove a line here THAT COMMIT WILL BE LOST.
+#
+# However, if you remove everything, the rebase will be aborted.
+#
+</pre>
+</code>
+</td>
+<td>
+<div class="highlight"><pre><span></span><span class="k">pick</span> <span class="mh">d05ab26</span> Flick it
+<span class="k">update-ref</span> <span class="nl">refs/heads/other</span>
+
+<span class="c"># Rebase </span><span class="mh">7d2c29b</span><span class="c">..</span><span class="mh">d05ab26</span><span class="c"> onto </span><span class="mh">7d2c29b</span><span class="c"> (1 command)</span>
+<span class="c">#</span>
+<span class="c"># Commands:</span>
+<span class="c"># </span><span class="k">p</span><span class="c">, </span><span class="k">pick</span><span class="nv"> &lt;commit&gt;</span><span class="c"> = use commit</span>
+<span class="c"># </span><span class="k">r</span><span class="c">, </span><span class="k">reword</span><span class="nv"> &lt;commit&gt;</span><span class="c"> = use commit, but edit the commit message</span>
+<span class="c"># </span><span class="k">e</span><span class="c">, </span><span class="k">edit</span><span class="nv"> &lt;commit&gt;</span><span class="c"> = use commit, but stop for amending</span>
+<span class="c"># </span><span class="k">s</span><span class="c">, </span><span class="k">squash</span><span class="nv"> &lt;commit&gt;</span><span class="c"> = use commit, but meld into previous commit</span>
+<span class="c"># </span><span class="k">f</span><span class="c">, </span><span class="k">fixup</span><span class="nv"> [-C | -c] &lt;commit&gt;</span><span class="c"> = like "squash" but keep only the previous</span>
+<span class="c">#                    commit's log message, unless -C is used, in which case</span>
+<span class="c">#                    keep only this commit's message; -c is same as -C but</span>
+<span class="c">#                    opens the editor</span>
+<span class="c"># </span><span class="k">x</span><span class="c">, </span><span class="k">exec</span><span class="nv"> &lt;command&gt;</span><span class="c"> = run command (the rest of the line) using shell</span>
+<span class="c"># </span><span class="k">b</span><span class="c">, </span><span class="k">break</span><span class="nv"> = stop here (continue rebase later with 'git rebase --continue')</span>
+<span class="c"># </span><span class="k">d</span><span class="c">, </span><span class="k">drop</span><span class="nv"> &lt;commit&gt;</span><span class="c"> = remove commit</span>
+<span class="c"># </span><span class="k">l</span><span class="c">, </span><span class="k">label</span><span class="nv"> &lt;label&gt;</span><span class="c"> = label current HEAD with a name</span>
+<span class="c"># </span><span class="k">t</span><span class="c">, </span><span class="k">reset</span><span class="nv"> &lt;label&gt;</span><span class="c"> = reset HEAD to a label</span>
+<span class="c"># </span><span class="k">m</span><span class="c">, </span><span class="k">merge</span><span class="nv"> [-C &lt;commit&gt; | -c &lt;commit&gt;] &lt;label&gt; [# &lt;oneline&gt;]</span>
+<span class="c">#         create a merge commit using the original merge commit's</span>
+<span class="c">#         message (or the oneline, if no original merge commit was</span>
+<span class="c">#         specified); use -c &lt;commit&gt; to reword the commit message</span>
+<span class="c"># </span><span class="k">u</span><span class="c">, </span><span class="k">update-ref</span><span class="nv"> &lt;ref&gt;</span><span class="c"> = track a placeholder for the &lt;ref&gt; to be updated</span>
+<span class="c">#                       to this position in the new commits. The &lt;ref&gt; is</span>
+<span class="c">#                       updated at the end of the rebase</span>
+<span class="c">#</span>
+<span class="c"># These lines can be re-ordered; they are executed from top to bottom.</span>
+<span class="c">#</span>
+<span class="c"># If you remove a line here THAT COMMIT WILL BE LOST.</span>
+<span class="c">#</span>
+<span class="c"># However, if you remove everything, the rebase will be aborted.</span>
+<span class="c">#</span>
+</pre></div>
+</td>
+</tr>
 </tbody>
 </table>
 </body>

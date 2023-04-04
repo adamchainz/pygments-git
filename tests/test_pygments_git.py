@@ -4,11 +4,11 @@ from html import escape as e
 from pathlib import Path
 from textwrap import dedent
 
-from bs4 import BeautifulSoup
 import pytest
+from bs4 import BeautifulSoup
 from pygments import highlight
-from pygments.lexers import get_lexer_by_name
 from pygments.formatters import HtmlFormatter
+from pygments.lexers import get_lexer_by_name
 
 MODULE_DIR = Path(__file__).parent.resolve()
 formatter = HtmlFormatter(style="colorful")
@@ -32,10 +32,10 @@ def golden_file(request):
         loaded_cases[testid] = (lexer, given, result)
 
     class Checker:
-        def __init__(self):
+        def __init__(self) -> None:
             self.cases: dict[str, tuple[str, str, str]] = {}
 
-        def check(self, testid: str, lexer: str, given: str):
+        def check(self, testid: str, lexer: str, given: str) -> None:
             given = dedent(given).rstrip("\n")
             result = highlight(
                 given,
@@ -102,7 +102,7 @@ def golden_file(request):
             "</tbody>",
             "</table>",
             "</body>",
-            "</html>",
+            "</html>\n",
         ]
     )
 

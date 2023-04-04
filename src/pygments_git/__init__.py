@@ -45,13 +45,19 @@ class GitSessionLexer(RegexLexer):
             (
                 r"""(?x)
                     ^
-                    (\*\ )?
+                    ([|/\\ ]*\*\ )?  # --graph
                     ([0-9a-f]{7})
                     (\ )
                     (\(.*?\) )?
+                    (.*)
+                    $
                 """,
                 bygroups(  # type: ignore [no-untyped-call]
-                    Generic.Output, Number.Hex, Generic.Output, Name.Label
+                    Generic.Output,
+                    Number.Hex,
+                    Generic.Output,
+                    Name.Label,
+                    Generic.Output,
                 ),
             ),
             # git log
@@ -68,14 +74,41 @@ class GitSessionLexer(RegexLexer):
             (
                 r"""(?x)
                     ^
-                    ((?:Author|Date|AuthorDate|Commit|CommitDate|Co-Authored-By|Signed-off-by):)
+                    ((?:Author|AuthorDate|Commit|CommitDate|Date):)
                     (\ +)
-                    (.*)$
+                    (.*)
+                    $
                 """,
                 bygroups(  # type: ignore [no-untyped-call]
                     Keyword.Declaration,
                     Generic.Output,
                     String.Symbol,
+                ),
+            ),
+            (
+                r"""(?xi)
+                    ^
+                    (\ *)
+                    ((?:co-authored|signed-off)-by:)
+                    (\ +)
+                    (.*)
+                    $
+                """,
+                bygroups(  # type: ignore [no-untyped-call]
+                    Generic.Output,
+                    Keyword.Declaration,
+                    Generic.Output,
+                    String.Symbol,
+                ),
+            ),
+            # git commit
+            (
+                r"^(\[main )([0-9a-f]{7})(\])(.*)$",
+                bygroups(  # type: ignore [no-untyped-call]
+                    Name.Label,
+                    Number.Hex,
+                    Name.Label,
+                    Generic.Output,
                 ),
             ),
             # Any SHA to be highlighted as such

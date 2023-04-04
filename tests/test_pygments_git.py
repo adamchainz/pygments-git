@@ -115,18 +115,29 @@ def test_git_console(golden_file):
         $ git reflog
         0e87b4d (HEAD -> main, origin/main) HEAD@{0}: commit: Bop it
         414a4ce HEAD@{1}: commit (amend): Twist it
+
         $ git log --oneline 'main'
         0e87b4d (HEAD -> main, origin/main) Bop it
         414a4ce Twist it
+
         $ git log --graph --oneline
         * 0e87b4d (HEAD -> main, origin/main) Bop it
         * 414a4ce Twist it
+        | * 8b96195 (origin/twister, twister) Right foot red
+        |/
+        * f01aa9f Start the party
+        |\\
+        | * c3338de Another initial commit
+        * 187c021 Initial commit
+
         $ git log --patch -n 1
         commit 0e87b4d49a0c48fd29b1b1c400ac7ebeabeb535d (HEAD -> main)
         Author: A Hacker <hacker@example.com>
         Date:   Tue Apr 4 11:32:10 2023 +0100
 
             Bop it
+
+            Signed-off-by: A Hacker <hacker@example.com>
 
         diff --git it.txt it.txt
         index 3eb29f0..ed3581b 100644
@@ -135,5 +146,8 @@ def test_git_console(golden_file):
         @@ -1 +1 @@
         -twisted
         +bopped
+
+        $ git commit -m "Spin it"
+        [main 0bcdb8f] Spin it
         """,
     )

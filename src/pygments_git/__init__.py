@@ -12,7 +12,6 @@ from pygments.token import Keyword
 from pygments.token import Name
 from pygments.token import Number
 from pygments.token import String
-from pygments.token import Text
 
 
 class GitSessionLexer(RegexLexer):
@@ -39,24 +38,20 @@ class GitSessionLexer(RegexLexer):
                     )
                 """,
                 bygroups(  # type: ignore [no-untyped-call]
-                    Number.Hex, Text, Name.Label, Name.Tag
+                    Number.Hex, Generic.Output, Name.Label, Name.Tag
                 ),
             ),
             # git log --oneline
             (
                 r"""(?x)
                     ^
+                    (\*\ )?
                     ([0-9a-f]{7})
                     (\ )
-                    (
-                        \(
-                        (HEAD\ ->\ )?
-                        ([-\w_/]+)
-                        \)
-                    )
+                    (\(.*?\) )?
                 """,
                 bygroups(  # type: ignore [no-untyped-call]
-                    Number.Hex, Text, Name.Label
+                    Generic.Output, Number.Hex, Generic.Output, Name.Label
                 ),
             ),
             # git log

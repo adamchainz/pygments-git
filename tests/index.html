@@ -101,8 +101,11 @@ $ git reflog
 0e87b4d (HEAD -&gt; main, origin/main) HEAD@{0}: commit: Bop it
 414a4ce HEAD@{1}: commit (amend): Twist it
 $ git log --oneline &#x27;main&#x27;
-0e87b4d Bop it
+0e87b4d (HEAD -&gt; main, origin/main) Bop it
 414a4ce Twist it
+$ git log --graph --oneline
+* 0e87b4d (HEAD -&gt; main, origin/main) Bop it
+* 414a4ce Twist it
 $ git log --patch -n 1
 commit 0e87b4d49a0c48fd29b1b1c400ac7ebeabeb535d (HEAD -&gt; main)
 Author: A Hacker &lt;hacker@example.com&gt;
@@ -122,11 +125,14 @@ index 3eb29f0..ed3581b 100644
 </td>
 <td>
 <div class="highlight"><pre><span></span><span class="gp">$ </span>git<span class="w"> </span>reflog
-<span class="mh">0e87b4d</span> <span class="nl">(HEAD -&gt; main, origin/main) </span><span class="nt">HEAD@{0}:</span><span class="go"> commit: Bop it</span>
-<span class="mh">414a4ce</span> <span class="nt">HEAD@{1}:</span><span class="go"> commit (amend): Twist it</span>
+<span class="mh">0e87b4d</span><span class="go"> </span><span class="nl">(HEAD -&gt; main, origin/main) </span><span class="nt">HEAD@{0}:</span><span class="go"> commit: Bop it</span>
+<span class="mh">414a4ce</span><span class="go"> </span><span class="nt">HEAD@{1}:</span><span class="go"> commit (amend): Twist it</span>
 <span class="gp">$ </span>git<span class="w"> </span>log<span class="w"> </span>--oneline<span class="w"> </span><span class="s1">'main'</span>
-<span class="mh">0e87b4d</span><span class="go"> Bop it</span>
+<span class="mh">0e87b4d</span><span class="go"> </span><span class="nl">(HEAD -&gt; main, origin/main)</span><span class="go"> Bop it</span>
 <span class="mh">414a4ce</span><span class="go"> Twist it</span>
+<span class="gp">$ </span>git<span class="w"> </span>log<span class="w"> </span>--graph<span class="w"> </span>--oneline
+<span class="go">* </span><span class="mh">0e87b4d</span><span class="go"> </span><span class="nl">(HEAD -&gt; main, origin/main)</span><span class="go"> Bop it</span>
+<span class="go">* </span><span class="mh">414a4ce</span><span class="go"> Twist it</span>
 <span class="gp">$ </span>git<span class="w"> </span>log<span class="w"> </span>--patch<span class="w"> </span>-n<span class="w"> </span><span class="m">1</span>
 <span class="gu">commit</span><span class="go"> </span><span class="mh">0e87b4d49a0c48fd29b1b1c400ac7ebeabeb535d</span><span class="go"> </span><span class="nl">(HEAD -&gt; main)</span>
 <span class="kd">Author:</span><span class="go"> </span><span class="ss">A Hacker &lt;hacker@example.com&gt;</span>

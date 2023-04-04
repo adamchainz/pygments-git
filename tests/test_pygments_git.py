@@ -116,8 +116,11 @@ def test_git_console(golden_file):
         0e87b4d (HEAD -> main, origin/main) HEAD@{0}: commit: Bop it
         414a4ce HEAD@{1}: commit (amend): Twist it
         $ git log --oneline 'main'
-        0e87b4d Bop it
+        0e87b4d (HEAD -> main, origin/main) Bop it
         414a4ce Twist it
+        $ git log --graph --oneline
+        * 0e87b4d (HEAD -> main, origin/main) Bop it
+        * 414a4ce Twist it
         $ git log --patch -n 1
         commit 0e87b4d49a0c48fd29b1b1c400ac7ebeabeb535d (HEAD -> main)
         Author: A Hacker <hacker@example.com>

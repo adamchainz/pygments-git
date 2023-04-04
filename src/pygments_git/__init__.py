@@ -7,14 +7,94 @@ from pygments.lexer import RegexLexer
 from pygments.lexer import using
 from pygments.lexers.diff import DiffLexer
 from pygments.lexers.shell import BashLexer
+from pygments.token import Comment
 from pygments.token import Generic
 from pygments.token import Keyword
 from pygments.token import Name
 from pygments.token import Number
 from pygments.token import String
+from pygments.token import Text
 
 
-class GitSessionLexer(RegexLexer):
+class GitRebaseTodoLexer(RegexLexer):
+    name = "Git Rebase TODO"
+    aliases = ("git-rebase-todo",)
+    flags = re.MULTILINE
+
+    tokens = {
+        "root": [
+            (
+                r"""(?x)
+                    ^
+                    ([a-z]+)
+                    (\ )
+                    ([0-9a-f]{7})
+                    (\ .*)
+                    $
+                """,
+                bygroups(  # type: ignore [no-untyped-call]
+                    Keyword, Text, Number.Hex, Text
+                ),
+            ),
+            (
+                r"""(?x)
+                    ^
+                    (update-ref)
+                    (\ )
+                    (.*)
+                    $
+                """,
+                bygroups(Keyword, Text, Name.Label),  # type: ignore [no-untyped-call]
+            ),
+            (
+                r"""(?x)
+                    ^
+                    (\#\ Rebase\ )
+                    ([0-9a-f]{7})
+                    (\.\.)
+                    ([0-9a-f]{7})
+                    (\ onto\ )
+                    ([0-9a-f]{7})
+                    (.*)
+                    $
+                """,
+                bygroups(  # type: ignore [no-untyped-call]
+                    Comment,
+                    Number.Hex,
+                    Comment,
+                    Number.Hex,
+                    Comment,
+                    Number.Hex,
+                    Comment,
+                ),
+            ),
+            (
+                r"""(?x)
+                    ^
+                    (\#\ )
+                    ([a-z])
+                    (,\ )
+                    ([a-z-]+)
+                    (\ .*?)
+                    (\ =\ .*|$)
+                    $
+                """,
+                bygroups(  # type: ignore [no-untyped-call]
+                    Comment,
+                    Keyword,
+                    Comment,
+                    Keyword,
+                    Name.Variable,
+                    Comment,
+                ),
+            ),
+            (r"^#.*\n", Comment),
+            (r".*\n", Text),
+        ],
+    }
+
+
+class GitBashSessionLexer(RegexLexer):
     name = "Git Bash Session"
     aliases = ("git-console", "git-shell-session")
     flags = re.MULTILINE

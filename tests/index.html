@@ -100,18 +100,29 @@ git-console
 $ git reflog
 0e87b4d (HEAD -&gt; main, origin/main) HEAD@{0}: commit: Bop it
 414a4ce HEAD@{1}: commit (amend): Twist it
+
 $ git log --oneline &#x27;main&#x27;
 0e87b4d (HEAD -&gt; main, origin/main) Bop it
 414a4ce Twist it
+
 $ git log --graph --oneline
 * 0e87b4d (HEAD -&gt; main, origin/main) Bop it
 * 414a4ce Twist it
+| * 8b96195 (origin/twister, twister) Right foot red
+|/
+* f01aa9f Start the party
+|\
+| * c3338de Another initial commit
+* 187c021 Initial commit
+
 $ git log --patch -n 1
 commit 0e87b4d49a0c48fd29b1b1c400ac7ebeabeb535d (HEAD -&gt; main)
 Author: A Hacker &lt;hacker@example.com&gt;
 Date:   Tue Apr 4 11:32:10 2023 +0100
 
     Bop it
+
+    Signed-off-by: A Hacker &lt;hacker@example.com&gt;
 
 diff --git it.txt it.txt
 index 3eb29f0..ed3581b 100644
@@ -120,6 +131,9 @@ index 3eb29f0..ed3581b 100644
 @@ -1 +1 @@
 -twisted
 +bopped
+
+$ git commit -m &quot;Spin it&quot;
+[main 0bcdb8f] Spin it
 </pre>
 </code>
 </td>
@@ -127,18 +141,29 @@ index 3eb29f0..ed3581b 100644
 <div class="highlight"><pre><span></span><span class="gp">$ </span>git<span class="w"> </span>reflog
 <span class="mh">0e87b4d</span><span class="go"> </span><span class="nl">(HEAD -&gt; main, origin/main) </span><span class="nt">HEAD@{0}:</span><span class="go"> commit: Bop it</span>
 <span class="mh">414a4ce</span><span class="go"> </span><span class="nt">HEAD@{1}:</span><span class="go"> commit (amend): Twist it</span>
+
 <span class="gp">$ </span>git<span class="w"> </span>log<span class="w"> </span>--oneline<span class="w"> </span><span class="s1">'main'</span>
 <span class="mh">0e87b4d</span><span class="go"> </span><span class="nl">(HEAD -&gt; main, origin/main)</span><span class="go"> Bop it</span>
 <span class="mh">414a4ce</span><span class="go"> Twist it</span>
+
 <span class="gp">$ </span>git<span class="w"> </span>log<span class="w"> </span>--graph<span class="w"> </span>--oneline
 <span class="go">* </span><span class="mh">0e87b4d</span><span class="go"> </span><span class="nl">(HEAD -&gt; main, origin/main)</span><span class="go"> Bop it</span>
 <span class="go">* </span><span class="mh">414a4ce</span><span class="go"> Twist it</span>
+<span class="go">| * </span><span class="mh">8b96195</span><span class="go"> </span><span class="nl">(origin/twister, twister)</span><span class="go"> Right foot red</span>
+<span class="go">|/</span>
+<span class="go">* </span><span class="mh">f01aa9f</span><span class="go"> Start the party</span>
+<span class="go">|\</span>
+<span class="go">| * </span><span class="mh">c3338de</span><span class="go"> Another initial commit</span>
+<span class="go">* </span><span class="mh">187c021</span><span class="go"> Initial commit</span>
+
 <span class="gp">$ </span>git<span class="w"> </span>log<span class="w"> </span>--patch<span class="w"> </span>-n<span class="w"> </span><span class="m">1</span>
 <span class="gu">commit</span><span class="go"> </span><span class="mh">0e87b4d49a0c48fd29b1b1c400ac7ebeabeb535d</span><span class="go"> </span><span class="nl">(HEAD -&gt; main)</span>
 <span class="kd">Author:</span><span class="go"> </span><span class="ss">A Hacker &lt;hacker@example.com&gt;</span>
 <span class="kd">Date:</span><span class="go">   </span><span class="ss">Tue Apr 4 11:32:10 2023 +0100</span>
 
 <span class="go">    Bop it</span>
+
+<span class="go">    </span><span class="kd">Signed-off-by:</span><span class="go"> </span><span class="ss">A Hacker &lt;hacker@example.com&gt;</span>
 
 <span class="gh">diff --git it.txt it.txt</span>
 <span class="gh">index </span><span class="mh">3eb29f0</span><span class="go">..</span><span class="mh">ed3581b</span><span class="go"> 100644</span>
@@ -147,6 +172,9 @@ index 3eb29f0..ed3581b 100644
 <span class="gu">@@ -1 +1 @@</span>
 <span class="gd">-twisted</span>
 <span class="gi">+bopped</span>
+
+<span class="gp">$ </span>git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">"Spin it"</span>
+<span class="nl">[main </span><span class="mh">0bcdb8f</span><span class="nl">]</span><span class="go"> Spin it</span>
 </pre></div>
 </td>
 </tr>

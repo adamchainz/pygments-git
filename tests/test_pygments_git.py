@@ -44,7 +44,7 @@ def golden_file(request):
             )
             result = str(BeautifulSoup(result, "html.parser")).strip()
             self.cases[testid] = (lexer, given, result)
-            if not save and testid in loaded_cases:
+            if not save and testid in loaded_cases:  # pragma: no branch
                 loaded_lexer, loaded_given, loaded_result = loaded_cases[testid]
                 if lexer == loaded_lexer and given == loaded_given:
                     assert result == loaded_result
@@ -53,60 +53,58 @@ def golden_file(request):
 
     yield checker
 
-    if not save:
-        return
-
-    lines = [
-        "<!doctype html>",
-        "<html>",
-        "<head>",
-        f"<style>{formatter.get_style_defs('.highlight')}</style>",
-        "</head>",
-        "<body>",
-        "<table>",
-        "<thead>",
-        "<tr>",
-        "<th>ID</th>",
-        "<th>Lexer</th>",
-        "<th>Input</th>",
-        "<th>Output</th>",
-        "</tr>",
-        "</thead>",
-        "<tbody>",
-    ]
-    for testid, (lexer, given, result) in checker.cases.items():
+    if save:  # pragma: no cover
+        lines = [
+            "<!doctype html>",
+            "<html>",
+            "<head>",
+            f"<style>{formatter.get_style_defs('.highlight')}</style>",
+            "</head>",
+            "<body>",
+            "<table>",
+            "<thead>",
+            "<tr>",
+            "<th>ID</th>",
+            "<th>Lexer</th>",
+            "<th>Input</th>",
+            "<th>Output</th>",
+            "</tr>",
+            "</thead>",
+            "<tbody>",
+        ]
+        for testid, (lexer, given, result) in checker.cases.items():
+            lines.extend(
+                [
+                    "<tr>",
+                    "<td>",
+                    e(testid),
+                    "</td>",
+                    "<td>",
+                    e(lexer),
+                    "</td>",
+                    "<td>",
+                    "<code>",
+                    "<pre>",
+                    e(given),
+                    "</pre>",
+                    "</code>",
+                    "</td>",
+                    "<td>",
+                    result,
+                    "</td>",
+                    "</tr>",
+                ]
+            )
         lines.extend(
             [
-                "<tr>",
-                "<td>",
-                e(testid),
-                "</td>",
-                "<td>",
-                e(lexer),
-                "</td>",
-                "<td>",
-                "<code>",
-                "<pre>",
-                e(given),
-                "</pre>",
-                "</code>",
-                "</td>",
-                "<td>",
-                result,
-                "</td>",
-                "</tr>",
+                "</tbody>",
+                "</table>",
+                "</body>",
+                "</html>\n",
             ]
         )
-    lines.extend(
-        [
-            "</tbody>",
-            "</table>",
-            "</body>",
-            "</html>\n",
-        ]
-    )
 
-    index.write_text("\n".join(lines))
+        index.write_text("\n".join(lines))
 
 
 def test_git_console(golden_file):

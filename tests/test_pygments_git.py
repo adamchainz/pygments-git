@@ -23,12 +23,14 @@ def golden_file(request):
     text = index.read_text()
     soup = BeautifulSoup(text, "html.parser")
     loaded_cases: dict[str, tuple[str, str, str]] = {}
-    for row in soup.find("tbody").find_all("tr"):
-        tds = iter(row.find_all("td"))
-        testid = next(tds).get_text().strip()
-        lexer = next(tds).get_text().strip()
-        given = next(tds).get_text().strip()
-        result = str(next(tds).find("div", {"class": "highlight"})).strip()
+    for h2 in soup.find_all("h2"):
+        testid = h2["id"]
+        p = h2.find_next("p")
+        lexer = p.get_text().strip()[len("Lexer: ") :]
+        given_pre = p.find_next("pre")
+        given = given_pre.get_text().strip()
+        result_div = given_pre.find_next("div", {"class": "highlight"})
+        result = str(result_div).strip()
         loaded_cases[testid] = (lexer, given, result)
 
     class Checker:
@@ -58,48 +60,50 @@ def golden_file(request):
             "<!doctype html>",
             "<html>",
             "<head>",
-            f"<style>{formatter.get_style_defs('.highlight')}</style>",
+            "<style>",
+            dedent(
+                """\
+                :root {
+                  font-family: "PT Sans", sans-serif;
+                }
+                .compare {
+                  display: grid;
+                  grid-template-columns: repeat(2, 1fr);
+                  grid-gap: 1rem;
+                }
+                pre {
+                  background: #eee;
+                  padding: 0.5rem;
+                }
+                """
+            ),
+            formatter.get_style_defs(".highlight"),
+            "</style>",
             "</head>",
             "<body>",
-            "<table>",
-            "<thead>",
-            "<tr>",
-            "<th>ID</th>",
-            "<th>Lexer</th>",
-            "<th>Input</th>",
-            "<th>Output</th>",
-            "</tr>",
-            "</thead>",
-            "<tbody>",
+            "<h1>Tests</h1>",
         ]
         for testid, (lexer, given, result) in sorted(checker.cases.items()):
             lines.extend(
                 [
-                    "<tr>",
-                    "<td>",
+                    f"<h2 id={testid}>",
                     e(testid),
-                    "</td>",
-                    "<td>",
-                    e(lexer),
-                    "</td>",
-                    "<td>",
-                    "<code>",
+                    f"<a href=#{testid}>#</a>",
+                    "</h2>",
+                    "<p>",
+                    f"Lexer: {e(lexer)}",
+                    "</p>",
+                    "<div class=compare>" "<code>",
                     "<pre>",
                     e(given),
                     "</pre>",
                     "</code>",
-                    "</td>",
-                    "<td>",
                     result,
-                    "</td>",
-                    "</tr>",
+                    "</div>",
                 ]
             )
         lines.extend(
             [
-                "</tbody>",
-                "</table>",
-                "</body>",
                 "</html>\n",
             ]
         )

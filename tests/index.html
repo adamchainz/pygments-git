@@ -1,7 +1,21 @@
 <!doctype html>
 <html>
 <head>
-<style>pre { line-height: 125%; }
+<style>
+:root {
+  font-family: "PT Sans", sans-serif;
+}
+.compare {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 1rem;
+}
+pre {
+  background: #eee;
+  padding: 0.5rem;
+}
+
+pre { line-height: 125%; }
 td.linenos .normal { color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px; }
 span.linenos { color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px; }
 td.linenos .special { color: #000000; background-color: #ffffc0; padding-left: 5px; padding-right: 5px; }
@@ -74,28 +88,19 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 .highlight .vg { color: #dd7700; font-weight: bold } /* Name.Variable.Global */
 .highlight .vi { color: #3333BB } /* Name.Variable.Instance */
 .highlight .vm { color: #996633 } /* Name.Variable.Magic */
-.highlight .il { color: #0000DD; font-weight: bold } /* Literal.Number.Integer.Long */</style>
+.highlight .il { color: #0000DD; font-weight: bold } /* Literal.Number.Integer.Long */
+</style>
 </head>
 <body>
-<table>
-<thead>
-<tr>
-<th>ID</th>
-<th>Lexer</th>
-<th>Input</th>
-<th>Output</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>
+<h1>Tests</h1>
+<h2 id=test_git_commit_edit_msg>
 test_git_commit_edit_msg
-</td>
-<td>
-git-commit-edit-msg
-</td>
-<td>
-<code>
+<a href=#test_git_commit_edit_msg>#</a>
+</h2>
+<p>
+Lexer: git-commit-edit-msg
+</p>
+<div class=compare><code>
 <pre>
 Bop it
 
@@ -118,8 +123,6 @@ index ed3581b..b27f6d4 100644
 +bopped
 </pre>
 </code>
-</td>
-<td>
 <div class="highlight"><pre><span></span>Bop it
 
 <span class="c"># Please enter the commit message for your changes. Lines starting</span>
@@ -140,17 +143,15 @@ index ed3581b..b27f6d4 100644
 <span class="gd">-twisted</span>
 <span class="gi">+bopped</span>
 </pre></div>
-</td>
-</tr>
-<tr>
-<td>
+</div>
+<h2 id=test_git_console>
 test_git_console
-</td>
-<td>
-git-console
-</td>
-<td>
-<code>
+<a href=#test_git_console>#</a>
+</h2>
+<p>
+Lexer: git-console
+</p>
+<div class=compare><code>
 <pre>
 $ git reflog
 0e87b4d (HEAD -&gt; main, origin/main) HEAD@{0}: commit: Bop it
@@ -191,8 +192,6 @@ $ git commit -m &quot;Spin it&quot;
 [main 0bcdb8f] Spin it
 </pre>
 </code>
-</td>
-<td>
 <div class="highlight"><pre><span></span><span class="gp">$ </span>git<span class="w"> </span>reflog
 <span class="mh">0e87b4d</span><span class="go"> </span><span class="nl">(HEAD -&gt; main, origin/main) </span><span class="nt">HEAD@{0}:</span><span class="go"> commit: Bop it</span>
 <span class="mh">414a4ce</span><span class="go"> </span><span class="nt">HEAD@{1}:</span><span class="go"> commit (amend): Twist it</span>
@@ -231,17 +230,15 @@ $ git commit -m &quot;Spin it&quot;
 <span class="gp">$ </span>git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">"Spin it"</span>
 <span class="nl">[main </span><span class="mh">0bcdb8f</span><span class="nl">]</span><span class="go"> Spin it</span>
 </pre></div>
-</td>
-</tr>
-<tr>
-<td>
+</div>
+<h2 id=test_git_rebase_todo>
 test_git_rebase_todo
-</td>
-<td>
-git-rebase-todo
-</td>
-<td>
-<code>
+<a href=#test_git_rebase_todo>#</a>
+</h2>
+<p>
+Lexer: git-rebase-todo
+</p>
+<div class=compare><code>
 <pre>
 pick d05ab26 Flick it  # awesome
 f -C 414a4ce
@@ -283,8 +280,6 @@ exec echo &#x27;rebase complete&#x27; | say
 #
 </pre>
 </code>
-</td>
-<td>
 <div class="highlight"><pre><span></span><span class="k">pick</span> <span class="mh">d05ab26</span> Flick it  <span class="c"># awesome</span>
 <span class="k">f -C</span> <span class="mh">414a4ce</span>
 <span class="k">label</span> <span class="nl">bopped</span>
@@ -324,9 +319,5 @@ exec echo &#x27;rebase complete&#x27; | say
 <span class="c"># However, if you remove everything, the rebase will be aborted.</span>
 <span class="c">#</span>
 </pre></div>
-</td>
-</tr>
-</tbody>
-</table>
-</body>
+</div>
 </html>

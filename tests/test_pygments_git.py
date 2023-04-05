@@ -186,8 +186,13 @@ def test_git_rebase_todo(golden_file):
         "test_git_rebase_todo",
         "git-rebase-todo",
         """\
-        pick d05ab26 Flick it
-        update-ref refs/heads/other
+        pick d05ab26 Flick it  # awesome
+        f -C 414a4ce
+        label bopped
+        break  # pause
+        merge -C 414a4ce twisted
+        update-ref refs/heads/other #update
+        exec echo 'rebase complete' | say
 
         # Rebase 7d2c29b..d05ab26 onto 7d2c29b (1 command)
         #

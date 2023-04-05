@@ -243,8 +243,13 @@ git-rebase-todo
 <td>
 <code>
 <pre>
-pick d05ab26 Flick it
-update-ref refs/heads/other
+pick d05ab26 Flick it  # awesome
+f -C 414a4ce
+label bopped
+break  # pause
+merge -C 414a4ce twisted
+update-ref refs/heads/other #update
+exec echo &#x27;rebase complete&#x27; | say
 
 # Rebase 7d2c29b..d05ab26 onto 7d2c29b (1 command)
 #
@@ -280,8 +285,13 @@ update-ref refs/heads/other
 </code>
 </td>
 <td>
-<div class="highlight"><pre><span></span><span class="k">pick</span> <span class="mh">d05ab26</span> Flick it
-<span class="k">update-ref</span> <span class="nl">refs/heads/other</span>
+<div class="highlight"><pre><span></span><span class="k">pick</span> <span class="mh">d05ab26</span> Flick it  <span class="c"># awesome</span>
+<span class="k">f -C</span> <span class="mh">414a4ce</span>
+<span class="k">label</span> <span class="nl">bopped</span>
+<span class="k">break</span>  <span class="c"># pause</span>
+<span class="k">merge</span> <span class="k">-C </span><span class="mh">414a4ce</span> <span class="nl">twisted</span>
+<span class="k">update-ref</span> <span class="nl">refs/heads/other </span><span class="c">#update</span>
+<span class="k">exec</span> <span class="nb">echo</span><span class="w"> </span><span class="s1">'rebase complete'</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>say
 
 <span class="c"># Rebase </span><span class="mh">7d2c29b</span><span class="c">..</span><span class="mh">d05ab26</span><span class="c"> onto </span><span class="mh">7d2c29b</span><span class="c"> (1 command)</span>
 <span class="c">#</span>

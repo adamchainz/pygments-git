@@ -206,14 +206,65 @@ class GitRebaseTodoLexer(RegexLexer):
             (
                 r"""(?x)
                     ^
-                    ([a-z]+)
+                    (x|exec)
                     (\ )
-                    ([0-9a-f]{7})
-                    (\ .*)
+                """,
+                bygroups(Keyword, Text),  # type: ignore [no-untyped-call]
+                "command",
+            ),
+            (
+                r"""(?x)
+                    ^
+                    (b|break)
+                    (\ +)?
+                    (\#.*?)?
+                    $
+                """,
+                bygroups(Keyword, Text, Comment),  # type: ignore [no-untyped-call]
+            ),
+            (
+                r"""(?x)
+                    ^
+                    (l|label|t|reset)
+                    (\ +)
+                    (.*?)
+                    (\#.*?)?
                     $
                 """,
                 bygroups(  # type: ignore [no-untyped-call]
-                    Keyword, Text, Number.Hex, Text
+                    Keyword, Text, Name.Label, Comment
+                ),
+            ),
+            (
+                r"""(?x)
+                    ^
+                    (m|merge)
+                    (\ +)
+                    (?:
+                        (-[Cc]\ )
+                        ([0-9a-f]{7})
+                    )?
+                    (\ +)
+                    (.*?)
+                    (\#.*?)?
+                    $
+                """,
+                bygroups(  # type: ignore [no-untyped-call]
+                    Keyword, Text, Keyword, Number.Hex, Text, Name.Label, Comment
+                ),
+            ),
+            (
+                r"""(?x)
+                    ^
+                    ([a-z]+(?:\ -[Cc])?)
+                    (\ )
+                    ([0-9a-f]{7})
+                    (\ .*?|)
+                    (\#.*)?
+                    $
+                """,
+                bygroups(  # type: ignore [no-untyped-call]
+                    Keyword, Text, Number.Hex, Text, Comment
                 ),
             ),
             (
@@ -221,10 +272,13 @@ class GitRebaseTodoLexer(RegexLexer):
                     ^
                     (update-ref)
                     (\ )
-                    (.*)
+                    (.*?)
+                    (\#.*)?
                     $
                 """,
-                bygroups(Keyword, Text, Name.Label),  # type: ignore [no-untyped-call]
+                bygroups(  # type: ignore [no-untyped-call]
+                    Keyword, Text, Name.Label, Comment
+                ),
             ),
             (
                 r"""(?x)
@@ -270,5 +324,8 @@ class GitRebaseTodoLexer(RegexLexer):
             ),
             (r"^#.*\n", Comment),
             (r".*\n", Text),
+        ],
+        "command": [
+            (r".*$", using(BashLexer), "#pop"),  # type: ignore [no-untyped-call]
         ],
     }

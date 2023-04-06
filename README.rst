@@ -83,6 +83,13 @@ __ https://pygments.org/docs/lexers/#pygments.lexers.diff.DiffLexer
 -------------------
 
 A lexer for the ``git-rebase-todo`` file that Git opens when you run |git rebase --interactive|__.
+It calls out to |BashLexer2|__ for highlighting commands on lines starting with ``x`` or ``exerc`` a ``$`` and |DiffLexer3|__ for highlighting inline diffs.
 
 .. |git rebase --interactive| replace:: ``git rebase --interactive``
 __ https://git-scm.com/docs/git-rebase#Documentation/git-rebase.txt--i
+
+.. |BashLexer2| replace:: ``BashLexer``
+__ https://pygments.org/docs/lexers/#pygments.lexers.shell.BashLexer
+
+.. |DiffLexer3| replace:: ``DiffLexer``
+__ https://pygments.org/docs/lexers/#pygments.lexers.diff.DiffLexer

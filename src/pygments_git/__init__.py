@@ -12,6 +12,7 @@ from pygments.token import Generic
 from pygments.token import Keyword
 from pygments.token import Name
 from pygments.token import Number
+from pygments.token import Punctuation
 from pygments.token import String
 from pygments.token import Text
 
@@ -58,6 +59,77 @@ class GitCommitEditMsgLexer(RegexLexer):
                 "#pop",
             ),
         ],
+    }
+
+
+class GitConflictMarkersLexer(RegexLexer):
+    name = "Git Conflict Markers"
+    aliases = ("git-conflict-markers",)
+    flags = re.MULTILINE
+
+    tokens = {
+        "root": [
+            (
+                r"^(<{7})( )?(.+)?$",
+                bygroups(  # type: ignore [no-untyped-call]
+                    Punctuation.Marker, Text, Name.Label
+                ),
+            ),
+            (
+                r"""(?x)
+                    ^
+                    (\|{7})
+                    (\ parent\ of\ )
+                    ([0-9a-f]{7})
+                    (\ \()
+                    (.*?)
+                    (\))
+                    $
+                """,
+                bygroups(  # type: ignore [no-untyped-call]
+                    Punctuation.Marker,
+                    Name.Label,
+                    Number.Hex,
+                    Text,
+                    Name.Label,
+                    Text,
+                ),
+            ),
+            (
+                r"^(\|{7})( )?(.*)$",
+                bygroups(  # type: ignore [no-untyped-call]
+                    Punctuation.Marker, Text, Name.Label
+                ),
+            ),
+            (
+                r"^(={7})( )?(.*)$",
+                bygroups(  # type: ignore [no-untyped-call]
+                    Punctuation.Marker, Text, Name.Label
+                ),
+            ),
+            (
+                r"""(?x)
+                    ^
+                    (>{7})
+                    (\ )
+                    ([0-9a-f]{7})
+                    (\ \()
+                    (.*?)
+                    (\))
+                    $
+                """,
+                bygroups(  # type: ignore [no-untyped-call]
+                    Punctuation.Marker, Text, Number.Hex, Text, Name.Label, Text
+                ),
+            ),
+            (
+                r"^(>{7})(\ )?(.*)?$",
+                bygroups(  # type: ignore [no-untyped-call]
+                    Punctuation.Marker, Text, Name.Label
+                ),
+            ),
+            (r".*\n", Text),
+        ]
     }
 
 

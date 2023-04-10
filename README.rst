@@ -55,6 +55,8 @@ Within Sphinx/docutils, you can refer to them in ``code-block`` directives:
         91e9879 Aye carumba! Grammar mistake
         61c4c08 Cowabunga! Update bibliography
 
+To preview the lexers, open the ``tests/index.html`` file within the repository.
+
 ``git-commit-edit-msg``
 -----------------------
 
@@ -66,6 +68,12 @@ __ https://pygments.org/docs/lexers/#pygments.lexers.diff.DiffLexer
 
 .. |git commit --verbose| replace:: ``git commit --verbose``
 __ https://git-scm.com/docs/git-commit#Documentation/git-commit.txt--v
+
+``git-conflict-markers``
+------------------------
+
+A lexer for the conflict markers that Git adds to indicate conflicts during a merge.
+All other text in the file is lexed as plain text.
 
 ``git-console``
 ---------------

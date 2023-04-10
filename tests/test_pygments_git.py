@@ -78,6 +78,14 @@ def golden_file(request):
                 """
             ),
             formatter.get_style_defs(".highlight"),
+            dedent(
+                """\
+                .highlight .pm { /* Punctuation.Marker */
+                    color: #540099;
+                    font-weight: bold;
+                }
+                """
+            ),
             "</style>",
             "</head>",
             "<body>",
@@ -135,6 +143,38 @@ def test_git_commit_edit_msg(golden_file):
         @@ -1 +1 @@
         -twisted
         +bopped
+        """,
+    )
+
+
+def test_git_conflict_markers(golden_file):
+    golden_file.check(
+        "test_git_conflict_markers",
+        "git-conflict-markers",
+        """\
+        <<<<<<< HEAD
+        red
+        ||||||| parent of 09fb2fb (Make it blue)
+        yellow
+        =======
+        blue
+        >>>>>>> 09fb2fb (Make it blue)
+
+        <<<<<<< current
+        teal
+        ||||||| original
+        cerulean
+        ======= bla
+        cyan
+        >>>>>>> incoming
+
+        <<<<<<<
+        purple
+        |||||||
+        puce
+        =======
+        cerise
+        >>>>>>>
         """,
     )
 

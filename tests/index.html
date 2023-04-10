@@ -89,6 +89,11 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 .highlight .vi { color: #3333BB } /* Name.Variable.Instance */
 .highlight .vm { color: #996633 } /* Name.Variable.Magic */
 .highlight .il { color: #0000DD; font-weight: bold } /* Literal.Number.Integer.Long */
+.highlight .pm { /* Punctuation.Marker */
+    color: #540099;
+    font-weight: bold;
+}
+
 </style>
 </head>
 <body>
@@ -142,6 +147,65 @@ index ed3581b..b27f6d4 100644
 <span class="gu">@@ -1 +1 @@</span>
 <span class="gd">-twisted</span>
 <span class="gi">+bopped</span>
+</pre></div>
+</div>
+<h2 id=test_git_conflict_markers>
+test_git_conflict_markers
+<a href=#test_git_conflict_markers>#</a>
+</h2>
+<p>
+Lexer: git-conflict-markers
+</p>
+<div class=compare><code>
+<pre>
+&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD
+red
+||||||| parent of 09fb2fb (Make it blue)
+yellow
+=======
+blue
+&gt;&gt;&gt;&gt;&gt;&gt;&gt; 09fb2fb (Make it blue)
+
+&lt;&lt;&lt;&lt;&lt;&lt;&lt; current
+teal
+||||||| original
+cerulean
+======= bla
+cyan
+&gt;&gt;&gt;&gt;&gt;&gt;&gt; incoming
+
+&lt;&lt;&lt;&lt;&lt;&lt;&lt;
+purple
+|||||||
+puce
+=======
+cerise
+&gt;&gt;&gt;&gt;&gt;&gt;&gt;
+</pre>
+</code>
+<div class="highlight"><pre><span></span><span class="pm">&lt;&lt;&lt;&lt;&lt;&lt;&lt;</span> <span class="nl">HEAD</span>
+red
+<span class="pm">|||||||</span><span class="nl"> parent of </span><span class="mh">09fb2fb</span> (<span class="nl">Make it blue</span>)
+yellow
+<span class="pm">=======</span>
+blue
+<span class="pm">&gt;&gt;&gt;&gt;&gt;&gt;&gt;</span> <span class="mh">09fb2fb</span> (<span class="nl">Make it blue</span>)
+
+<span class="pm">&lt;&lt;&lt;&lt;&lt;&lt;&lt;</span> <span class="nl">current</span>
+teal
+<span class="pm">|||||||</span> <span class="nl">original</span>
+cerulean
+<span class="pm">=======</span> <span class="nl">bla</span>
+cyan
+<span class="pm">&gt;&gt;&gt;&gt;&gt;&gt;&gt;</span> <span class="nl">incoming</span>
+
+<span class="pm">&lt;&lt;&lt;&lt;&lt;&lt;&lt;</span>
+purple
+<span class="pm">|||||||</span>
+puce
+<span class="pm">=======</span>
+cerise
+<span class="pm">&gt;&gt;&gt;&gt;&gt;&gt;&gt;</span>
 </pre></div>
 </div>
 <h2 id=test_git_console>

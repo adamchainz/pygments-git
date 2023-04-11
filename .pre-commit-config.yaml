@@ -39,7 +39,7 @@ repos:
   - id: pyupgrade
     args: [--py37-plus]
 - repo: https://github.com/psf/black
-  rev: 23.1.0
+  rev: 23.3.0
   hooks:
   - id: black
 - repo: https://github.com/adamchainz/blacken-docs
@@ -68,7 +68,7 @@ repos:
     - flake8-tidy-imports
     - flake8-typing-imports
 - repo: https://github.com/pre-commit/mirrors-mypy
-  rev: v1.1.1
+  rev: v1.2.0
   hooks:
   - id: mypy
     additional_dependencies:

@@ -10,11 +10,45 @@ from pygments.lexers.shell import BashLexer
 from pygments.token import Comment
 from pygments.token import Generic
 from pygments.token import Keyword
+from pygments.token import Literal
 from pygments.token import Name
 from pygments.token import Number
+from pygments.token import Operator
 from pygments.token import Punctuation
 from pygments.token import String
 from pygments.token import Text
+
+
+class GitAttributesLexer(RegexLexer):
+    name = "Git Attributes"
+    aliases = ("git-attributes",)
+    flags = re.MULTILINE
+
+    tokens = {
+        "root": [
+            (r"^#.*$", Comment),
+            (
+                r"^(\S+)(\s+)",
+                bygroups(Literal, Text),  # type: ignore[no-untyped-call]
+                "attributes",
+            ),
+            (r"^.*\n", Text),
+        ],
+        "attributes": [
+            (
+                r"(-)?(.+?)(=)([^ \t\n]+)",
+                bygroups(  # type: ignore[no-untyped-call]
+                    Operator, Name.Variable, Operator, String.Symbol
+                ),
+            ),
+            (
+                r"(-)?([^ \t\n]+)",
+                bygroups(Operator, Name.Variable),  # type: ignore[no-untyped-call]
+            ),
+            (r"[ \t]+", Text),
+            (r"$", Text, "#pop"),
+        ],
+    }
 
 
 class GitCommitEditMsgLexer(RegexLexer):

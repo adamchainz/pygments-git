@@ -119,6 +119,21 @@ def golden_file(request):
         index.write_text("\n".join(lines))
 
 
+def test_git_attributes(golden_file):
+    golden_file.check(
+        "test_git_attributes",
+        "git-attributes",
+        """\
+        # Hello attributes
+        *.txt       text
+        *\ttext=auto
+        *.sh        text eol=lf
+        *.jpg -text
+        *.ps1 text working-tree-encoding=UTF-16LE eol=CRLF
+        """,
+    )
+
+
 def test_git_commit_edit_msg(golden_file):
     golden_file.check(
         "test_git_commit_edit_msg",

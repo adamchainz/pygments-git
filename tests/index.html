@@ -98,6 +98,31 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 </head>
 <body>
 <h1>Tests</h1>
+<h2 id=test_git_attributes>
+test_git_attributes
+<a href=#test_git_attributes>#</a>
+</h2>
+<p>
+Lexer: git-attributes
+</p>
+<div class=compare><code>
+<pre>
+# Hello attributes
+*.txt       text
+*	text=auto
+*.sh        text eol=lf
+*.jpg -text
+*.ps1 text working-tree-encoding=UTF-16LE eol=CRLF
+</pre>
+</code>
+<div class="highlight"><pre><span></span><span class="c"># Hello attributes</span>
+<span class="l">*.txt</span>       <span class="nv">text</span>
+<span class="l">*</span>	<span class="nv">text</span><span class="o">=</span><span class="ss">auto</span>
+<span class="l">*.sh</span>        <span class="nv">text eol</span><span class="o">=</span><span class="ss">lf</span>
+<span class="l">*.jpg</span> <span class="o">-</span><span class="nv">text</span>
+<span class="l">*.ps1</span> <span class="nv">text working-tree-encoding</span><span class="o">=</span><span class="ss">UTF-16LE</span><span class="nv"> eol</span><span class="o">=</span><span class="ss">CRLF</span>
+</pre></div>
+</div>
 <h2 id=test_git_commit_edit_msg>
 test_git_commit_edit_msg
 <a href=#test_git_commit_edit_msg>#</a>

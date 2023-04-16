@@ -2,6 +2,9 @@
 Changelog
 =========
 
+1.2.0 (2023-04-16)
+------------------
+
 * Add ``git-attributes`` and ``git-conflict-markers`` lexers.
 
 1.1.0 (2023-04-06)

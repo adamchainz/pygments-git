@@ -60,6 +60,13 @@ def golden_file(request):
             "<!doctype html>",
             "<html>",
             "<head>",
+            "<title>pygments-git tests</title>",
+            (
+                '<link rel="icon" href="data:image/svg+xml,&lt;svg xmlns=%22'
+                + "http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22&gt;"
+                + "&lt;text y=%22.9em%22 font-size=%2290%22&gt;🎨&lt;/text&gt;"
+                + '&lt;/svg&gt;">'
+            ),
             "<style>",
             dedent(
                 """\
@@ -236,6 +243,24 @@ def test_git_console(golden_file):
 
         $ git commit -m "Spin it"
         [main 0bcdb8f] Spin it
+        """,
+    )
+
+
+def test_git_ignore(golden_file):
+    golden_file.check(
+        "test_git_ignore",
+        "git-ignore",
+        """\
+        # Hello ignorance
+        /apples.py
+        *.pyc
+        !apples.pyc
+        \\!literal-exclamation.apple
+        a??les.pyx
+        [Aa]pples.txt
+
+        fruits/**
         """,
     )
 

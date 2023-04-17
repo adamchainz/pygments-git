@@ -302,6 +302,29 @@ class GitBashSessionLexer(RegexLexer):
     }
 
 
+class GitIgnoreLexer(RegexLexer):
+    name = "Git Ignore"
+    aliases = ("git-ignore",)
+    flags = re.MULTILINE
+
+    tokens = {
+        "root": [
+            (r"^#.*$", Comment),
+            (r"^", Text, "pattern"),
+        ],
+        "pattern": [
+            (r"\\!", Text),
+            (r"([!?*]|\*\*)", Keyword),
+            (
+                r"(\[)(.*?)(\])",
+                bygroups(Keyword, Text, Keyword),  # type: ignore [no-untyped-call]
+            ),
+            (r"\n", Text, "#pop"),
+            (r".", Text),
+        ],
+    }
+
+
 class GitRebaseTodoLexer(RegexLexer):
     name = "Git Rebase TODO"
     aliases = ("git-rebase-todo",)

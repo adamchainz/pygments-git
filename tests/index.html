@@ -1,6 +1,8 @@
 <!doctype html>
 <html>
 <head>
+<title>pygments-git tests</title>
+<link rel="icon" href="data:image/svg+xml,&lt;svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22&gt;&lt;text y=%22.9em%22 font-size=%2290%22&gt;🎨&lt;/text&gt;&lt;/svg&gt;">
 <style>
 :root {
   font-family: "PT Sans", sans-serif;
@@ -318,6 +320,37 @@ $ git commit -m &quot;Spin it&quot;
 
 <span class="gp">$ </span>git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">"Spin it"</span>
 <span class="nl">[main </span><span class="mh">0bcdb8f</span><span class="nl">]</span><span class="go"> Spin it</span>
+</pre></div>
+</div>
+<h2 id=test_git_ignore>
+test_git_ignore
+<a href=#test_git_ignore>#</a>
+</h2>
+<p>
+Lexer: git-ignore
+</p>
+<div class=compare><code>
+<pre>
+# Hello ignorance
+/apples.py
+*.pyc
+!apples.pyc
+\!literal-exclamation.apple
+a??les.pyx
+[Aa]pples.txt
+
+fruits/**
+</pre>
+</code>
+<div class="highlight"><pre><span></span><span class="c"># Hello ignorance</span>
+/apples.py
+<span class="k">*</span>.pyc
+<span class="k">!</span>apples.pyc
+\!literal-exclamation.apple
+a<span class="k">??</span>les.pyx
+<span class="k">[</span>Aa<span class="k">]</span>pples.txt
+
+fruits/<span class="k">**</span>
 </pre></div>
 </div>
 <h2 id=test_git_rebase_todo>

@@ -48,8 +48,9 @@ def golden_file(request):
             self.cases[testid] = (lexer, given, result)
             if not save and testid in loaded_cases:  # pragma: no branch
                 loaded_lexer, loaded_given, loaded_result = loaded_cases[testid]
-                if lexer == loaded_lexer and given == loaded_given:  # pragma: no branch
-                    assert result == loaded_result
+                assert loaded_lexer == lexer
+                assert loaded_given == given
+                assert result == loaded_result
 
     checker = Checker()
 
@@ -243,6 +244,21 @@ def test_git_console(golden_file):
 
         $ git commit -m "Spin it"
         [main 0bcdb8f] Spin it
+
+        $ git pull
+        hint: You have divergent branches and need to specify how to reconcile them.
+        hint: You can do so by running one of the following commands sometime before
+        hint: your next pull:
+        hint:
+        hint:   git config pull.rebase false  # merge
+        hint:   git config pull.rebase true   # rebase
+        hint:   git config pull.ff only       # fast-forward only
+        hint:
+        hint: You can replace "git config" with "git config --global" to set a default
+        hint: preference for all repositories. You can also pass --rebase, --no-rebase,
+        hint: or --ff-only on the command line to override the configured default per
+        hint: invocation.
+        fatal: Need to specify how to reconcile divergent branches.
         """,
     )
 

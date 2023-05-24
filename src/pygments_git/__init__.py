@@ -264,6 +264,9 @@ class GitBashSessionLexer(RegexLexer):
                     Generic.Output,
                 ),
             ),
+            # hints and errors
+            (r"^hint:.*$", Comment.Single),
+            (r"^(error|fatal):.*$", Generic.Error),
             # Any SHA to be highlighted as such
             (r"\b([0-9a-f]{40}|[0-9a-f]{7})\b", Number.Hex),
             # Diff lines

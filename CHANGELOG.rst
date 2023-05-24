@@ -4,6 +4,8 @@ Changelog
 
 * Support hint, error, and fatal lines in ``git-console``.
 
+* Fix ``commit`` lines and support ``Merge:`` lines in ``git-console``.
+
 1.3.0 (2023-04-17)
 ------------------
 

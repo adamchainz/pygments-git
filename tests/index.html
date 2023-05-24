@@ -279,6 +279,14 @@ index 3eb29f0..ed3581b 100644
 -twisted
 +bopped
 
+$ git show 362fdb8
+commit 362fdb88072ca0259e9f6e0251b47af4d75e141c
+Merge: 8456fa3 722568d
+Author: A Hacker &lt;hacker9001@funmail.example&gt;
+Date:   ...
+
+    Merge branch &#x27;jig&#x27;
+
 $ git commit -m &quot;Spin it&quot;
 [main 0bcdb8f] Spin it
 
@@ -317,7 +325,7 @@ fatal: Need to specify how to reconcile divergent branches.
 <span class="go">* </span><span class="mh">187c021</span><span class="go"> Initial commit</span>
 
 <span class="gp">$ </span>git<span class="w"> </span>log<span class="w"> </span>--patch<span class="w"> </span>-n<span class="w"> </span><span class="m">1</span>
-<span class="gu">commit</span><span class="go"> </span><span class="mh">0e87b4d49a0c48fd29b1b1c400ac7ebeabeb535d</span><span class="go"> </span><span class="nl">(HEAD -&gt; main)</span>
+<span class="gu">commit</span><span class="go"> </span><span class="mh">0e87b4d49a0c48fd29b1b1c400ac7ebeabeb535d</span><span class="nl"> (HEAD -&gt; main)</span>
 <span class="kd">Author:</span><span class="go"> </span><span class="ss">A Hacker &lt;hacker@example.com&gt;</span>
 <span class="kd">Date:</span><span class="go">   </span><span class="ss">Tue Apr 4 11:32:10 2023 +0100</span>
 
@@ -332,6 +340,14 @@ fatal: Need to specify how to reconcile divergent branches.
 <span class="gu">@@ -1 +1 @@</span>
 <span class="gd">-twisted</span>
 <span class="gi">+bopped</span>
+
+<span class="gp">$ </span>git<span class="w"> </span>show<span class="w"> </span>362fdb8
+<span class="gu">commit</span><span class="go"> </span><span class="mh">362fdb88072ca0259e9f6e0251b47af4d75e141c</span>
+<span class="kd">Merge:</span><span class="go"> </span><span class="mh">8456fa3 722568d</span>
+<span class="kd">Author:</span><span class="go"> </span><span class="ss">A Hacker &lt;hacker9001@funmail.example&gt;</span>
+<span class="kd">Date:</span><span class="go">   </span><span class="ss">...</span>
+
+<span class="go">    Merge branch 'jig'</span>
 
 <span class="gp">$ </span>git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">"Spin it"</span>
 <span class="nl">[main </span><span class="mh">0bcdb8f</span><span class="nl">]</span><span class="go"> Spin it</span>

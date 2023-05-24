@@ -242,6 +242,14 @@ def test_git_console(golden_file):
         -twisted
         +bopped
 
+        $ git show 362fdb8
+        commit 362fdb88072ca0259e9f6e0251b47af4d75e141c
+        Merge: 8456fa3 722568d
+        Author: A Hacker <hacker9001@funmail.example>
+        Date:   ...
+
+            Merge branch 'jig'
+
         $ git commit -m "Spin it"
         [main 0bcdb8f] Spin it
 

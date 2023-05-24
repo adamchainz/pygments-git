@@ -215,12 +215,11 @@ class GitBashSessionLexer(RegexLexer):
             ),
             # git log
             (
-                r"^(commit)( )([0-9a-f]{40})( )(\(.*?\))?$",
+                r"^(commit)( )([0-9a-f]{40})( \(.*?\))?$",
                 bygroups(  # type: ignore [no-untyped-call]
                     Generic.Subheading,
                     Generic.Output,
                     Number.Hex,
-                    Generic.Output,
                     Name.Label,
                 ),
             ),
@@ -236,6 +235,20 @@ class GitBashSessionLexer(RegexLexer):
                     Keyword.Declaration,
                     Generic.Output,
                     String.Symbol,
+                ),
+            ),
+            (
+                r"""(?x)
+                    ^
+                    (Merge:)
+                    (\ +)
+                    (.*)
+                    $
+                """,
+                bygroups(  # type: ignore [no-untyped-call]
+                    Keyword.Declaration,
+                    Generic.Output,
+                    Number.Hex,
                 ),
             ),
             (

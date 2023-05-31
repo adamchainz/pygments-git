@@ -104,7 +104,7 @@ class GitConflictMarkersLexer(RegexLexer):
     tokens = {
         "root": [
             (
-                r"^(<{7})( )?(.+)?$",
+                r"^(<{7})(?:( )(.+))?$",
                 bygroups(  # type: ignore [no-untyped-call]
                     Punctuation.Marker, Text, Name.Label
                 ),
@@ -130,13 +130,13 @@ class GitConflictMarkersLexer(RegexLexer):
                 ),
             ),
             (
-                r"^(\|{7})( )?(.*)$",
+                r"^(\|{7})(?:( )(.*))?$",
                 bygroups(  # type: ignore [no-untyped-call]
                     Punctuation.Marker, Text, Name.Label
                 ),
             ),
             (
-                r"^(={7})( )?(.*)$",
+                r"^(={7})(?:( )(.*))?$",
                 bygroups(  # type: ignore [no-untyped-call]
                     Punctuation.Marker, Text, Name.Label
                 ),
@@ -157,7 +157,7 @@ class GitConflictMarkersLexer(RegexLexer):
                 ),
             ),
             (
-                r"^(>{7})(\ )?(.*)?$",
+                r"^(>{7})(?:( )(.*))?$",
                 bygroups(  # type: ignore [no-untyped-call]
                     Punctuation.Marker, Text, Name.Label
                 ),

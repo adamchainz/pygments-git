@@ -2,6 +2,8 @@
 Changelog
 =========
 
+* Fix ``git-conflict-markers`` highlighting of non-marker lines that use marker symbols.
+
 1.4.0 (2023-05-24)
 ------------------
 

@@ -175,6 +175,18 @@ def test_git_conflict_markers(golden_file):
         "test_git_conflict_markers",
         "git-conflict-markers",
         """\
+        This is a heading
+        =================
+
+        another heading
+        <<<<<<<<<<<<<<<
+
+        another heading
+        |||||||||||||||
+
+        another heading
+        >>>>>>>>>>>>>>>
+
         <<<<<<< HEAD
         red
         ||||||| parent of 09fb2fb (Make it blue)

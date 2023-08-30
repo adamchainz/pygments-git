@@ -51,6 +51,20 @@ class GitAttributesLexer(RegexLexer):
     }
 
 
+class GitBlameIgnoreRevsLexer(RegexLexer):
+    name = "Git Blame Ignore Revs"
+    aliases = ("git-blame-ignore-revs",)
+    flags = re.MULTILINE
+
+    tokens = {
+        "root": [
+            (r"^#.*$", Comment),
+            (r"^([0-9a-f]{40,})$", Number.Hex),
+            (r"^.*\n", Generic.Error),
+        ],
+    }
+
+
 class GitCommitEditMsgLexer(RegexLexer):
     name = "Git Commit Edit-Msg"
     aliases = ("git-commit-edit-msg",)

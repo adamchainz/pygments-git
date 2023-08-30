@@ -57,6 +57,15 @@ Within Sphinx/docutils, you can refer to them in ``code-block`` directives:
 
 To preview the lexers, open the ``tests/index.html`` file within the repository.
 
+``git-blame-ignore-revs``
+-------------------------
+
+A lexer for the file format used by |blame.ignoreRevsFile|__.
+The de facto name for a repository-wide ignore file is ``.git-blame-ignore-revs``, as recognized `by GitHub <https://docs.github.com/en/repositories/working-with-files/using-files/viewing-a-file#ignore-commits-in-the-blame-view>`__ and potentially other Git hosting services.
+
+.. |blame.ignoreRevsFile| replace:: ``blame.ignoreRevsFile``
+__ https://git-scm.com/docs/git-blame#Documentation/git-blame.txt-blameignoreRevsFile
+
 ``git-commit-edit-msg``
 -----------------------
 

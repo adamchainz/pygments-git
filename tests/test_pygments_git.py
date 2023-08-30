@@ -142,6 +142,18 @@ def test_git_attributes(golden_file):
     )
 
 
+def test_git_blame_ignore_revs(golden_file):
+    golden_file.check(
+        "test_git_blame_ignore_revs",
+        "git-blame-ignore-revs",
+        """\
+        # Reformatted with Black
+        a8940f7fbddf7fad9d7d50014d4e8d46baf30591
+        woops forgot to comment this line
+        """,
+    )
+
+
 def test_git_commit_edit_msg(golden_file):
     golden_file.check(
         "test_git_commit_edit_msg",

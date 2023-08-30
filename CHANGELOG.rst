@@ -2,6 +2,8 @@
 Changelog
 =========
 
+* Add ``git-blame-ignore-revs`` lexer.
+
 1.6.0 (2023-07-10)
 ------------------
 

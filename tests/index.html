@@ -36,6 +36,7 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 .highlight .cs { color: #cc0000; font-weight: bold } /* Comment.Special */
 .highlight .gd { color: #A00000 } /* Generic.Deleted */
 .highlight .ge { font-style: italic } /* Generic.Emph */
+.highlight .ges { font-weight: bold; font-style: italic } /* Generic.EmphStrong */
 .highlight .gr { color: #FF0000 } /* Generic.Error */
 .highlight .gh { color: #000080; font-weight: bold } /* Generic.Heading */
 .highlight .gi { color: #00A000 } /* Generic.Inserted */
@@ -123,6 +124,25 @@ Lexer: git-attributes
 <span class="l">*.sh</span>        <span class="nv">text eol</span><span class="o">=</span><span class="ss">lf</span>
 <span class="l">*.jpg</span> <span class="o">-</span><span class="nv">text</span>
 <span class="l">*.ps1</span> <span class="nv">text working-tree-encoding</span><span class="o">=</span><span class="ss">UTF-16LE</span><span class="nv"> eol</span><span class="o">=</span><span class="ss">CRLF</span>
+</pre></div>
+</div>
+<h2 id=test_git_blame_ignore_revs>
+test_git_blame_ignore_revs
+<a href=#test_git_blame_ignore_revs>#</a>
+</h2>
+<p>
+Lexer: git-blame-ignore-revs
+</p>
+<div class=compare><code>
+<pre>
+# Reformatted with Black
+a8940f7fbddf7fad9d7d50014d4e8d46baf30591
+woops forgot to comment this line
+</pre>
+</code>
+<div class="highlight"><pre><span></span><span class="c"># Reformatted with Black</span>
+<span class="mh">a8940f7fbddf7fad9d7d50014d4e8d46baf30591</span>
+<span class="gr">woops forgot to comment this line</span>
 </pre></div>
 </div>
 <h2 id=test_git_commit_edit_msg>

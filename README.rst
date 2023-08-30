@@ -57,6 +57,14 @@ Within Sphinx/docutils, you can refer to them in ``code-block`` directives:
 
 To preview the lexers, open the ``tests/index.html`` file within the repository.
 
+``git-attributes``
+-------------------------
+
+A lexer for |.gitattributes files|__.
+
+.. |.gitattributes files| replace:: ``.gitattributes`` files
+__ https://git-scm.com/docs/gitattributes
+
 ``git-blame-ignore-revs``
 -------------------------
 

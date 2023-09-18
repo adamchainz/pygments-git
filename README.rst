@@ -58,7 +58,7 @@ Within Sphinx/docutils, you can refer to them in ``code-block`` directives:
 To preview the lexers, open the ``tests/index.html`` file within the repository.
 
 ``git-attributes``
--------------------------
+------------------
 
 A lexer for |.gitattributes files|__.
 
@@ -103,6 +103,14 @@ __ https://pygments.org/docs/lexers/#pygments.lexers.shell.BashLexer
 
 .. |DiffLexer2| replace:: ``DiffLexer``
 __ https://pygments.org/docs/lexers/#pygments.lexers.diff.DiffLexer
+
+``git-ignore``
+--------------
+
+A lexer for |.gitignore files|__.
+
+.. |.gitignore files| replace:: ``.gitignore`` files
+__ https://git-scm.com/docs/gitignore
 
 ``git-rebase-todo``
 -------------------

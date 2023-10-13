@@ -33,8 +33,7 @@ Python 3.8 to 3.12 supported.
 
 ----
 
-**Working on a Django project?**
-Improve your skills with `one of my books <https://adamj.eu/books/>`__.
+**Get better at command line Git** with my book `Boost Your Git DX <https://adamchainz.gumroad.com/l/bygdx>`__.
 
 ----
 

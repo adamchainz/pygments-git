@@ -20,6 +20,12 @@ pygments-git
 
 Pygments lexers for Git output and files.
 
+----
+
+**Get better at command line Git** with my book `Boost Your Git DX <https://adamchainz.gumroad.com/l/bygdx>`__.
+
+----
+
 Installation
 ============
 
@@ -30,12 +36,6 @@ Use **pip**:
     python -m pip install pygments-git
 
 Python 3.8 to 3.12 supported.
-
-----
-
-**Get better at command line Git** with my book `Boost Your Git DX <https://adamchainz.gumroad.com/l/bygdx>`__.
-
-----
 
 Usage
 =====

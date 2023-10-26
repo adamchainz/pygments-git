@@ -1,5 +1,5 @@
 beautifulsoup4
-coverage
+coverage[toml]
 pygments
 pytest
 pytest-randomly

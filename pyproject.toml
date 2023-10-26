@@ -4,6 +4,45 @@ requires = [
   "setuptools",
 ]
 
+[project]
+name = "pygments-git"
+version = "1.7.0"
+description = "Pygments lexers for Git output and files."
+readme = {file = "README.rst", content-type = "text/x-rst"}
+keywords = [
+  "Git",
+  "Pygments",
+]
+license = {text = "MIT"}
+authors = [{name = "Adam Johnson", email = "me@adamj.eu"}]
+requires-python = ">=3.8"
+classifiers = [
+  "Development Status :: 5 - Production/Stable",
+  "Intended Audience :: Developers",
+  "License :: OSI Approved :: MIT License",
+  "Natural Language :: English",
+  "Operating System :: OS Independent",
+  "Programming Language :: Python :: 3 :: Only",
+  "Programming Language :: Python :: 3.8",
+  "Programming Language :: Python :: 3.9",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Typing :: Typed",
+]
+dependencies = [
+  "pygments",
+]
+urls = {Changelog = "https://github.com/adamchainz/pygments-git/blob/main/CHANGELOG.rst",Funding = "https://adamj.eu/books/",Repository = "https://github.com/adamchainz/pygments-git"}
+[project.entry-points."pygments.lexers"]
+git-attributes = "pygments_git:GitAttributesLexer"
+git-blame-ignore-revs = "pygments_git:GitBlameIgnoreRevsLexer"
+git-commit-edit-msg = "pygments_git:GitCommitEditMsgLexer"
+git-conflict-markers = "pygments_git:GitConflictMarkersLexer"
+git-console = "pygments_git:GitBashSessionLexer"
+git-ignore = "pygments_git:GitIgnoreLexer"
+git-rebase-todo = "pygments_git:GitRebaseTodoLexer"
+
 [tool.black]
 target-version = ['py38']
 
@@ -12,6 +51,23 @@ addopts = """\
     --strict-config
     --strict-markers
     """
+
+[tool.coverage.run]
+branch = true
+parallel = true
+source = [
+    "pygments_git",
+    "tests",
+]
+
+[tool.coverage.paths]
+source = [
+    "src",
+    ".tox/**/site-packages",
+]
+
+[tool.coverage.report]
+show_missing = true
 
 [tool.mypy]
 mypy_path = "src/"

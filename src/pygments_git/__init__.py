@@ -2,8 +2,8 @@ from __future__ import annotations
 
 import re
 
-from pygments.lexer import bygroups
 from pygments.lexer import RegexLexer
+from pygments.lexer import bygroups
 from pygments.lexer import using
 from pygments.lexers.diff import DiffLexer
 from pygments.lexers.shell import BashLexer

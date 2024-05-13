@@ -8,13 +8,15 @@ requires = [
 name = "pygments-git"
 version = "1.7.0"
 description = "Pygments lexers for Git output and files."
-readme = {file = "README.rst", content-type = "text/x-rst"}
+readme = { file = "README.rst", content-type = "text/x-rst" }
 keywords = [
   "Git",
   "Pygments",
 ]
-license = {text = "MIT"}
-authors = [{name = "Adam Johnson", email = "me@adamj.eu"}]
+license = { text = "MIT" }
+authors = [
+  { name = "Adam Johnson", email = "me@adamj.eu" },
+]
 requires-python = ">=3.8"
 classifiers = [
   "Development Status :: 5 - Production/Stable",
@@ -33,19 +35,17 @@ classifiers = [
 dependencies = [
   "pygments",
 ]
-urls = {Changelog = "https://github.com/adamchainz/pygments-git/blob/main/CHANGELOG.rst",Funding = "https://adamj.eu/books/",Repository = "https://github.com/adamchainz/pygments-git"}
-[project.entry-points."pygments.lexers"]
-git-attributes = "pygments_git:GitAttributesLexer"
-git-blame-ignore-revs = "pygments_git:GitBlameIgnoreRevsLexer"
-git-commit-edit-msg = "pygments_git:GitCommitEditMsgLexer"
-git-conflict-markers = "pygments_git:GitConflictMarkersLexer"
-git-console = "pygments_git:GitBashSessionLexer"
-git-ignore = "pygments_git:GitIgnoreLexer"
-git-rebase-todo = "pygments_git:GitRebaseTodoLexer"
-
+urls = { Changelog = "https://github.com/adamchainz/pygments-git/blob/main/CHANGELOG.rst", Funding = "https://adamj.eu/books/", Repository = "https://github.com/adamchainz/pygments-git" }
+entry-points."pygments.lexers".git-attributes = "pygments_git:GitAttributesLexer"
+entry-points."pygments.lexers".git-blame-ignore-revs = "pygments_git:GitBlameIgnoreRevsLexer"
+entry-points."pygments.lexers".git-commit-edit-msg = "pygments_git:GitCommitEditMsgLexer"
+entry-points."pygments.lexers".git-conflict-markers = "pygments_git:GitConflictMarkersLexer"
+entry-points."pygments.lexers".git-console = "pygments_git:GitBashSessionLexer"
+entry-points."pygments.lexers".git-ignore = "pygments_git:GitIgnoreLexer"
+entry-points."pygments.lexers".git-rebase-todo = "pygments_git:GitRebaseTodoLexer"
 [tool.isort]
 add_imports = [
-    "from __future__ import annotations"
+  "from __future__ import annotations",
 ]
 force_single_line = true
 profile = "black"
@@ -60,14 +60,14 @@ addopts = """\
 branch = true
 parallel = true
 source = [
-    "pygments_git",
-    "tests",
+  "pygments_git",
+  "tests",
 ]
 
 [tool.coverage.paths]
 source = [
-    "src",
-    ".tox/**/site-packages",
+  "src",
+  ".tox/**/site-packages",
 ]
 
 [tool.coverage.report]

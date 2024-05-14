@@ -43,6 +43,7 @@ entry-points."pygments.lexers".git-conflict-markers = "pygments_git:GitConflictM
 entry-points."pygments.lexers".git-console = "pygments_git:GitBashSessionLexer"
 entry-points."pygments.lexers".git-ignore = "pygments_git:GitIgnoreLexer"
 entry-points."pygments.lexers".git-rebase-todo = "pygments_git:GitRebaseTodoLexer"
+
 [tool.isort]
 add_imports = [
   "from __future__ import annotations",

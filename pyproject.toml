@@ -8,12 +8,11 @@ requires = [
 name = "pygments-git"
 version = "1.7.0"
 description = "Pygments lexers for Git output and files."
-readme = { file = "README.rst", content-type = "text/x-rst" }
+readme = "README.rst"
 keywords = [
   "Git",
   "Pygments",
 ]
-license = { text = "MIT" }
 authors = [
   { name = "Adam Johnson", email = "me@adamj.eu" },
 ]

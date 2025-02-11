@@ -43,6 +43,15 @@ entry-points."pygments.lexers".git-console = "pygments_git:GitBashSessionLexer"
 entry-points."pygments.lexers".git-ignore = "pygments_git:GitIgnoreLexer"
 entry-points."pygments.lexers".git-rebase-todo = "pygments_git:GitRebaseTodoLexer"
 
+[dependency-groups]
+test = [
+  "beautifulsoup4",
+  "coverage[toml]",
+  "pygments",
+  "pytest",
+  "pytest-randomly",
+]
+
 [tool.isort]
 add_imports = [
   "from __future__ import annotations",

@@ -2,21 +2,21 @@ from __future__ import annotations
 
 import re
 
-from pygments.lexer import RegexLexer
-from pygments.lexer import bygroups
-from pygments.lexer import using
+from pygments.lexer import RegexLexer, bygroups, using
 from pygments.lexers.diff import DiffLexer
 from pygments.lexers.shell import BashLexer
-from pygments.token import Comment
-from pygments.token import Generic
-from pygments.token import Keyword
-from pygments.token import Literal
-from pygments.token import Name
-from pygments.token import Number
-from pygments.token import Operator
-from pygments.token import Punctuation
-from pygments.token import String
-from pygments.token import Text
+from pygments.token import (
+    Comment,
+    Generic,
+    Keyword,
+    Literal,
+    Name,
+    Number,
+    Operator,
+    Punctuation,
+    String,
+    Text,
+)
 
 
 class GitAttributesLexer(RegexLexer):

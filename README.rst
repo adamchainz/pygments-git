@@ -35,7 +35,7 @@ Use **pip**:
 
     python -m pip install pygments-git
 
-Python 3.9 to 3.13 supported.
+Python 3.9 to 3.14 supported.
 
 Usage
 =====

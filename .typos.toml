@@ -10,4 +10,5 @@ extend-ignore-re = [
 ]
 
 [default.extend-words]
+  ges = "ges"
   nd = "nd"
